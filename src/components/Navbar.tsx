@@ -1,6 +1,8 @@
 import React from 'react';
 import logo from "@/assets/logo-icon.png"
 import Image from 'next/image';
+import Navlinks from './Navlinks';
+
 
 
 const Navbar = () => {
@@ -54,6 +56,8 @@ const Navbar = () => {
           <button className="btn bg-[#05893E] text-[#F3FBF4]">সাইন আপ</button>
         </div>
       </nav>
+      <Navlinks />
+
     </div>
 
   )
