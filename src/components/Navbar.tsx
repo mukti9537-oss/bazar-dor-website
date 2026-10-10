@@ -2,6 +2,7 @@ import React from 'react';
 import logo from "@/assets/logo-icon.png"
 import Image from 'next/image';
 import Navlinks from './Navlinks';
+import Link from 'next/link';
 
 
 
@@ -14,7 +15,7 @@ const Navbar = () => {
       {/* mobile navbar */}
 
       <nav className="flex md:hidden justify-between gap-4 max-w-7xl mx-auto py-5">
-        <div className="flex items-center gap-2">
+        <Link href="/" className="flex items-center gap-2">
           <Image className="bg-[#05893E] rounded-2xl px-2 py-2"
             src={logo}
             alt="Bazar-dor"
@@ -27,7 +28,7 @@ const Navbar = () => {
             <h2 className="text-[#1D271F] font-extrabold">বাজার দর</h2>
             <p className="text-[#1D271F] text-xs">{date}</p>
           </div>
-        </div>
+        </Link>
 
         <div className="flex gap-2">
           <button className="btn">সাইন ইন</button>
@@ -37,7 +38,7 @@ const Navbar = () => {
 
       {/* desktop navbar */}
       <nav className="hidden md:flex justify-between gap-4 max-w-7xl mx-auto py-5">
-        <div className="flex items-center gap-2">
+        <Link href="/" className="flex items-center gap-2">
           <Image className="bg-[#05893E] rounded-2xl px-2 py-2"
             src={logo}
             alt="Bazar-dor"
@@ -49,7 +50,7 @@ const Navbar = () => {
             <h2 className="text-[#1D271F] font-extrabold">বাজার দর</h2>
             <p className="text-[#1D271F] text-xs">{date}</p>
           </div>
-        </div>
+        </Link>
 
         <div className="flex gap-4 items-center">
           <button className="btn">সাইন ইন</button>

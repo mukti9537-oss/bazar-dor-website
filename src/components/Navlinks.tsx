@@ -14,7 +14,7 @@ const Navlinks = async () => {
     console.log(data)
     return (
         <div className="flex gap-8 items-center max-w-7xl mx-auto py-2 px-2">
-            {data.map((d , i) => <Link key={i} href={d.slug}> {d.icon}{d.nameBn}</Link>)}
+            {data.map((d , i) => <Link key={i} href={`/bazardor/${d.slug}`}> {d.icon}{d.nameBn}</Link>)}
         </div>
     );
 };
