@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Marquee from "@/components/Marquee";
+import { ToastContainer } from "react-toastify";
 
 const NotoSarifBengali =Noto_Serif_Bengali({
   subsets: ["latin", "bengali"],
@@ -25,8 +26,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col">
         <Navbar />
+
         <Marquee />
         {children}
+        <ToastContainer
+        position="top-right"
+        autoClose= {3000}
+        newestOnTop
+        theme="light" />
         <Footer />
         </body>
     </html>
