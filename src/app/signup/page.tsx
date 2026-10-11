@@ -99,7 +99,7 @@ if (error) {
   };
 
   return (
-    <main className="min-h-screen bg-[#f0f6f1] px-4 py-10 sm:py-14">
+    <main className=" flex min-h-screen items-center justify-between bg-[#f0f6f1] px-4 py-8 sm:py-12">
       <div className="mx-auto w-full max-w-md">
         {/* Heading */}
         <div className="mb-6 text-center">

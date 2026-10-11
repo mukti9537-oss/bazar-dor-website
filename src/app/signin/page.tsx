@@ -9,10 +9,10 @@ import { toast } from 'react-toastify';
 
 
 const SignInPage = () => {
-     const onSubmit = async (e: React.SubmitEvent<HTMLElement>) => {
+     const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const formData = new FormData(e.target);
+    const formData = new FormData(e.currentTarget);
     const user = Object.fromEntries(formData.entries()) as {
       email: string;
       password: string;
@@ -49,7 +49,7 @@ const SignInPage = () => {
     });
   }
     return (
-        <main className="min-h-screen bg-[#f0f6f1] px-4 py-10 sm:py-14">
+        <main className="flex min-h-screen items-center justify-center bg-[#f0f6f1] px-4 py-8 sm:py-12">
             <div className="mx-auto w-full max-w-md">
                 {/* heading */}
                 <div className="mb-6 text-center">
@@ -71,16 +71,7 @@ const SignInPage = () => {
                                 className="mb-2 block text-sm font-medium text-[#1D271F]">
                                 ইমেইল
                             </label>
-                            <input
-                                id="email"
-                                type="email"
-                                name="email"
-                                placeholder="you@example.com"
-                                autoComplete="email"
-                                required
-                                className="w-full rounded-lg border border-gray-200 bg-white px-3 py-2.5 text-sm text-gray-800
-                                  outline-none transition focus:border-[#05893e] focus:ring-2 focus:ring-[#0e0f0e]"
-                            />
+                         
                         </div>
                         {/* password */}
                         <div>
@@ -101,31 +92,13 @@ const SignInPage = () => {
                                   outline-none transition focus:border-[#05893e] focus:ring-2 focus:ring-[#0e0f0e]"
                             />
                         </div>
-                        {/* cheak password */}
-                        <div>
-                            <label
-                                htmlFor="confirmPassword"
-                                className="mb-2 block text-sm font-medium text-[#1D271F]">
-                                পাসওয়ার্ড নিশ্চিত করুন
-                            </label>
-                            <input
-                                id="confirmPassword"
-                                type="password"
-                                name="confirmPassword"
-                                placeholder="আবার লিখুন"
-                                autoComplete="new-password"
-                                minLength={8}
-                                required
-                                className="w-full rounded-lg border border-gray-200 bg-white px-3 py-2.5 text-sm text-gray-800
-                                  outline-none transition focus:border-[#05893e] focus:ring-2 focus:ring-[#0e0f0e]"
-                            />
-                        </div>
+                     
                         {/* sumit button */}
                         <button
                             type="submit"
                             className="w-full rounded-lg bg-[#08b04b] px-4 py-3 text-sm font-bold text-[#F3FBF4] shadow-sm transition hover:bg-[#047532] active:scale-[0.99]"
                         >
-                            অ্যাকাউন্ট তৈরি করুন
+                            সাইন ইন
                         </button>
                         {/* divided */}
 
@@ -165,9 +138,9 @@ const SignInPage = () => {
                     <p className="mt-5 text-center text-sm text-gray-500">
                         অ্যাকাউন্ট আছে?{" "}
                         <Link
-                            href="/signin"
+                            href="/signup"
                             className="font-medium text-[#05893e] hover:underline">
-                            সাইন ইন করুন
+                            সাইন আপ করুন
                         </Link>
                     </p>
                 </div>
@@ -175,7 +148,7 @@ const SignInPage = () => {
                 <div className="mt-6 text-center">
                     <Link
                         href="/"
-                        className="text-sm text-gray-500 transition hover:text-[##05893e]">
+                        className="text-sm text-gray-500 transition hover:text-[#05893e]">
                         ← হোম পেজে ফিরে যান
                     </Link>
                 </div>
