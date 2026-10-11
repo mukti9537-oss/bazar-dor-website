@@ -1,9 +1,53 @@
-import React from 'react';
+"use client"
+
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import Link from 'next/link';
+import { authClient } from "@/lib/auth-client";
+import { toast } from 'react-toastify';
+
+
 
 const SignInPage = () => {
+     const onSubmit = async (e: React.SubmitEvent<HTMLElement>) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.target);
+    const user = Object.fromEntries(formData.entries()) as {
+      email: string;
+      password: string;
+    };
+
+    console.log(user);
+
+    const { data, error } = await authClient.signIn.email({
+      ...user,
+      callbackURL: "/",
+    });
+
+    if (data) {
+      toast.success("Sign In successfull!");
+      console.log(data);
+    }
+
+    if (error) {
+      toast.error("Something went error!");
+      console.log(error);
+    }
+  };
+
+  const handleGoogleSignIn = async () => {
+    await authClient.signIn.social({
+      provider: "google",
+    });
+
+  };
+
+  const handleGithubSignIn = async () => {
+ await authClient.signIn.social({
+      provider: "github",
+    });
+  }
     return (
         <main className="min-h-screen bg-[#f0f6f1] px-4 py-10 sm:py-14">
             <div className="mx-auto w-full max-w-md">
@@ -18,7 +62,7 @@ const SignInPage = () => {
                 </div>
                 {/* signup from */}
                 <div className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm sm:p-8">
-                    <form className="space-y-4">
+                    <form className="space-y-4" onSubmit={onSubmit}>
                       
                         {/* email */}
                         <div>
@@ -96,6 +140,7 @@ const SignInPage = () => {
                         {/* social login button */}
                         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                             <button
+                            onClick={handleGoogleSignIn}
                                 type="button"
                                 className="flex items-center justify-center gap-2 rounded-lg border border-gray-200 px-3
                                   py-2.5 text-sm font-medium text-gray-700 transition hover:bg-gray-50">
@@ -105,6 +150,7 @@ const SignInPage = () => {
                                 Google দিয়ে চালিয়ে যান
                             </button>
                             <button
+                            onClick={handleGithubSignIn}
                                 type="button"
                                 className="flex items-center justify-center gap-2 rounded-lg border border-gray-200 px-3
                                   py-2.5 text-sm font-medium text-gray-700 transition hover:bg-gray-50">

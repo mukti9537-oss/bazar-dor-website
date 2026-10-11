@@ -3,6 +3,7 @@ import logo from "@/assets/logo-icon.png"
 import Image from 'next/image';
 import Navlinks from './Navlinks';
 import Link from 'next/link';
+import UserInfo from './UserInfo';
 
 
 
@@ -52,10 +53,9 @@ const Navbar = () => {
           </div>
         </Link>
 
-        <div className="flex gap-4 items-center">
-          <button className="btn">সাইন ইন</button>
-          <button className="btn bg-[#05893E] text-[#F3FBF4]">সাইন আপ</button>
-        </div>
+        <UserInfo />
+
+       
       </nav>
       <Navlinks />
 
