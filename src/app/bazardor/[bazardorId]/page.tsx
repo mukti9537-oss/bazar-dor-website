@@ -35,7 +35,7 @@ const Bazardorpage = async ({
 
     try {
         const res = await fetch(
-            `https://api.abcz.workers.dev/api/bazardor/products?category=${encodeURIComponent(bazardorId)}`,
+            `https://openapi.programming-hero.com/api/bazardor/products?category=${encodeURIComponent(bazardorId)}`,
             { cache: "no-store" }
         );
 

@@ -11,10 +11,10 @@ const Navbar = () => {
     dateStyle: "full",
   });
   return (
-    <div className="border-b border-gray-200 top-0 z-50 bg-white">
+    <div className=" border-b w-full max-w-full border-gray-200 top-0 z-50 bg-white">
       {/* mobile navbar */}
 
-      <nav className="flex md:hidden justify-between gap-4 max-w-7xl mx-auto py-5">
+      <nav className="flex w-full min-w-0 md:hidden items-center justify-between gap-2 px-3 py-4 sm:px-5">
         <Link href="/" className="flex items-center gap-2">
           <Image className="bg-[#05893E] rounded-2xl px-2 py-2"
             src={logo}
@@ -30,14 +30,14 @@ const Navbar = () => {
           </div>
         </Link>
 
-        <div className="flex gap-2">
+        <div className="flex shrink-0 gap-1 sm:gap-2">
           <button className="btn">সাইন ইন</button>
           <button className="btn bg-[#05893E] text-[#F3FBF4]">সাইন আপ</button>
         </div>
       </nav>
 
       {/* desktop navbar */}
-      <nav className="hidden md:flex justify-between gap-4 max-w-7xl mx-auto py-5">
+      <nav className="hidden md:flex w-full items-center justify-between gap-4 px-4 lg:px-6 max-w-7xl mx-auto py-5">
         <Link href="/" className="flex items-center gap-2">
           <Image className="bg-[#05893E] rounded-2xl px-2 py-2"
             src={logo}
