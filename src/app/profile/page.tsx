@@ -10,6 +10,7 @@ import { toast } from "react-toastify";
 const ProfilePage = () => {
     const { data: session, isPending } = authClient.useSession();
     const user = session?.user;
+
     const router = useRouter();
 
     const [isUpdating, setIsUpdating] = useState(false);
@@ -39,7 +40,7 @@ const ProfilePage = () => {
             const { error } = await authClient.updateUser({ name });
 
             if (error) {
-                toast.error(error.message || "নাম আপডেট করা যায়নি!");
+                toast.error(`${error.message} নাম আপডেট করা যায়নি!`);
                 return;
             }
 
@@ -58,7 +59,7 @@ const ProfilePage = () => {
             const { error } = await authClient.signOut();
 
             if (error) {
-                toast.error(error.message || "সাইন আউট করা যায়নি!");
+                toast.error(`${error.message} সাইন আউট করা যায়নি!`);
                 return;
             }
 
@@ -101,9 +102,8 @@ const ProfilePage = () => {
     }
 
     return (
-        <main className="min-h-[70vh] bg-[#f0f6f1] px-4 py-16 sm:py-[72]">
-            <div className="mx-auto w-full max-w-[672]">
-
+        <main className="min-h-[70vh] bg-[#f0f6f1] px-4 py-16 sm:py-[72px]">
+            <div className="mx-auto w-full max-w-[672px]">
                 {/* Page Heading */}
                 <div className="mb-5">
                     <h1 className="text-2xl font-bold tracking-tight text-[#1d271f]">
@@ -116,15 +116,13 @@ const ProfilePage = () => {
                 </div>
 
                 {/* Profile Information Card */}
-                <section className="flex min-h-[88] flex-col justify-between gap-4 rounded-xl border border-[#e6ece7] bg-[#fbfdfb] p-4 sm:flex-row sm:items-center sm:px-5">
-
+                <section className="flex min-h-[88px] flex-col justify-between gap-4 rounded-xl border border-[#e6ece7] bg-[#fbfdfb] p-4 sm:flex-row sm:items-center sm:px-5">
                     <div className="flex min-w-0 items-center gap-3">
-
                         {/* Profile Image */}
                         {user.image ? (
                             <Image
                                 src={user.image}
-                                alt={user.name || "Profile"}
+                                alt={user.name ? `${user.name} Profile` : "Profile"}
                                 width={48}
                                 height={48}
                                 unoptimized
@@ -141,7 +139,6 @@ const ProfilePage = () => {
                             <h2 className="truncate text-sm font-bold text-[#1d271f]">
                                 {user.name || "ব্যবহারকারী"}
                             </h2>
-
                             <p className="mt-1 break-all text-xs text-gray-500">
                                 {user.email}
                             </p>
@@ -161,15 +158,11 @@ const ProfilePage = () => {
 
                 {/* Edit Name Card */}
                 <section className="mt-4 rounded-xl border border-[#e6ece7] bg-[#fbfdfb] px-5 py-5 sm:px-6 sm:py-6">
-
                     <h2 className="mb-5 text-base font-bold text-[#27332a]">
                         তথ্য
                     </h2>
 
-                    <form
-                        onSubmit={handleUpdateProfile}
-                        className="space-y-2"
-                    >
+                    <form onSubmit={handleUpdateProfile} className="space-y-2">
                         <label
                             htmlFor="name"
                             className="block text-xs font-medium text-[#303a32]"
@@ -185,19 +178,18 @@ const ProfilePage = () => {
                             placeholder="আপনার নাম লিখুন"
                             autoComplete="name"
                             required
-                            className="h-[38] w-full rounded-lg border border-[#e5ebe6] bg-transparent px-3 text-sm text-[#1d271f] outline-none transition focus:border-[#05893e] focus:ring-2 focus:ring-[#05893e]/10"
+                            className="h-[38px] w-full rounded-lg border border-[#e5ebe6] bg-transparent px-3 text-sm text-[#1d271f] outline-none transition focus:border-[#05893e] focus:ring-2 focus:ring-[#05893e]/10"
                         />
 
                         <button
                             type="submit"
                             disabled={isUpdating}
-                            className="mt-2 flex h-[38] w-full items-center justify-center rounded-lg bg-[#078b40] px-4 text-xs font-semibold text-white shadow-sm transition hover:bg-[#047532] disabled:cursor-not-allowed disabled:opacity-60"
+                            className="mt-2 flex h-[38px] w-full items-center justify-center rounded-lg bg-[#078b40] px-4 text-xs font-semibold text-white shadow-sm transition hover:bg-[#047532] disabled:cursor-not-allowed disabled:opacity-60"
                         >
                             {isUpdating ? "আপডেট হচ্ছে..." : "আপডেট"}
                         </button>
                     </form>
                 </section>
-
             </div>
         </main>
     );
