@@ -197,7 +197,7 @@ const SignInPage = () => {
                                 id="email"
                                 type="email"
                                 name="email"
-                                placeholder="কমপক্ষে ৮ অক্ষর"
+                                placeholder="you@example.com"
                                 autoComplete="email"
                                 minLength={8}
                                 required
